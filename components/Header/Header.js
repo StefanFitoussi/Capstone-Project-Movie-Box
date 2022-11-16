@@ -19,6 +19,6 @@ const StyledHeader = styled.header`
 `;
 
 const StyledH1 = styled.h1`
-  border: 2px solid black;
+  border: 2px solid var(--text-primary);
   padding: 0.5rem 7rem;
 `;

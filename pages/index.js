@@ -1,3 +1,9 @@
+import styled from "styled-components";
+
 export default function Home() {
-  return <h1>Hello Flamingos! 🦩</h1>;
+  return (
+    <>
+      <h1>Your Movies</h1>
+    </>
+  );
 }

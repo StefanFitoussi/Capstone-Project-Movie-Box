@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+    :root {
+        --text-primary: black;
+    }
+
     html,
     body {
         padding: 0;
