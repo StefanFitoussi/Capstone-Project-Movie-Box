@@ -14,11 +14,11 @@ const StyledHeader = styled.header`
   justify-content: center;
   padding: 0 1rem;
   height: 5rem;
-  position: sticky;
-  z-index: 100;
+  position: fixed;
+  top: 0;
 `;
 
 const StyledH1 = styled.h1`
   border: 2px solid var(--text-primary);
-  padding: 0.5rem 5rem;
+  padding: 0.25em 2.5em;
 `;

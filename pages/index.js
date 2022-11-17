@@ -3,32 +3,46 @@ import movieData from "../db.json";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Your Movies</h1>
-      <br />
-      {movieData &&
-        movieData.map((movie) => {
-          return (
-            <StyledUl key={movie.id}>
-              <FancyLi>{movie.original_title}</FancyLi>
-              <StyledLi>Veröffentlichungsdatum: {movie.release_date}</StyledLi>
-              <StyledLi>Laufzeit: {movie.runtime} Min.</StyledLi>
-            </StyledUl>
-          );
-        })}
-    </main>
+    <>
+      <h2>Your Movies</h2>
+      <MovieList>
+        {movieData &&
+          movieData.map((movie) => {
+            return (
+              <li key={movie.id}>
+                <MovieTitle>{movie.original_title}</MovieTitle>
+                <MovieDetails>
+                  Veröffentlichungsdatum: {movie.release_date}
+                </MovieDetails>
+                <BottomMovieDetails>
+                  Laufzeit: {movie.runtime} Min.
+                </BottomMovieDetails>
+              </li>
+            );
+          })}
+      </MovieList>
+    </>
   );
 }
 
-const StyledUl = styled.ul`
+const MovieList = styled.ul`
   list-style-type: none;
 `;
 
-const FancyLi = styled.li`
+const MovieTitle = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
 `;
 
-const StyledLi = styled.li`
+const MovieDetails = styled.p`
   list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 0;
+`;
+
+const BottomMovieDetails = styled.p`
+  list-style-type: none;
+  margin-top: 0;
 `;
