@@ -10,9 +10,7 @@ export default function Home() {
         movieData.map((movie) => {
           return (
             <StyledUl key={movie.id}>
-              <StyledLi>
-                <strong>{movie.original_title}</strong>
-              </StyledLi>
+              <FancyLi>{movie.original_title}</FancyLi>
               <StyledLi>Veröffentlichungsdatum: {movie.release_date}</StyledLi>
               <StyledLi>Laufzeit: {movie.runtime} Min.</StyledLi>
             </StyledUl>
@@ -24,6 +22,11 @@ export default function Home() {
 
 const StyledUl = styled.ul`
   list-style-type: none;
+`;
+
+const FancyLi = styled.li`
+  font-size: 1.5rem;
+  font-weight: bold;
 `;
 
 const StyledLi = styled.li`
