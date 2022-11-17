@@ -9,9 +9,6 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0 1rem;
   height: 5rem;
   position: fixed;
