@@ -10,13 +10,11 @@ export default function Home() {
           movieData.map((movie) => {
             return (
               <li key={movie.id}>
-                <MovieTitle>{movie.original_title}</MovieTitle>
-                <MovieDetails>
+                <MovieTitleH3>{movie.original_title}</MovieTitleH3>
+                <ReleaseDate>
                   Veröffentlichungsdatum: {movie.release_date}
-                </MovieDetails>
-                <BottomMovieDetails>
-                  Laufzeit: {movie.runtime} Min.
-                </BottomMovieDetails>
+                </ReleaseDate>
+                <Runtime>Laufzeit: {movie.runtime} Min.</Runtime>
               </li>
             );
           })}
@@ -29,20 +27,19 @@ const MovieList = styled.ul`
   list-style-type: none;
 `;
 
-const MovieTitle = styled.p`
-  font-size: 1.5rem;
+const MovieTitleH3 = styled.h3`
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 0;
 `;
 
-const MovieDetails = styled.p`
+const ReleaseDate = styled.p`
   list-style-type: none;
   margin-top: 0;
   margin-bottom: 0;
 `;
 
-const BottomMovieDetails = styled.p`
+const Runtime = styled.p`
   list-style-type: none;
   margin-top: 0;
 `;
