@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
     :root {
         --text-primary: #000000;
         --text-secondary: #013220;
-        --background-primary: #3C7A1C;
+        --background-primary: #FFFFFF;
     }
 
     html,
@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
         display: flex;
         align-items: center;
         justify-content: center;
+        background-repeat: repeat-y;
     }
 
     * {

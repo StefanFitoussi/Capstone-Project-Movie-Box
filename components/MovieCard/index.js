@@ -31,7 +31,7 @@ const MovieList = styled.ul`
 const MovieListItem = styled.li`
   border: 4px solid black;
   padding: 8px;
-  margin: 20px;
+  margin: 25px;
   border-radius: 10px;
   background-color: var(--background-primary);
 `;
