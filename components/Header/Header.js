@@ -18,4 +18,5 @@ const StyledHeader = styled.header`
 const StyledH1 = styled.h1`
   border: 2px solid var(--text-primary);
   padding: 0.25em 2em;
+  background-color: var(--background-primary);
 `;

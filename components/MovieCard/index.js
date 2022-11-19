@@ -1,23 +1,44 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import movieData from "../../db.json";
+const API_URL =
+  "https://api.themoviedb.org/3/movie/popular?api_key=c02216a131e954f6cb9dc96daec0b215";
+const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
-export default function MovieCard() {
+export default function MovieCard(
+  original_title,
+  poster_path,
+  vote_average,
+  release_date,
+  runtime,
+  overview
+) {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setMovies(data.results);
+      });
+  }, []);
+
   return (
     <>
       <MovieList>
-        {movieData &&
-          movieData.map((movie) => {
-            return (
-              <MovieListItem key={movie.id}>
-                <MovieTitleH3>{movie.original_title}</MovieTitleH3>
-                <Poster>{movie.poster_path}</Poster>
-                <UserRating>User-Rating: {movie.vote_average}</UserRating>
-                <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
-                <Runtime>Runtime: {movie.runtime} Min.</Runtime>
-                <Overview>Overview: {movie.overview}</Overview>
-              </MovieListItem>
-            );
-          })}
+        return (
+        {movies.map((movieReq) => (
+          <MovieCard />
+        ))}
+        <MovieListItem key={movieReq.id} {...movieReq}>
+          <MovieTitleH3>{original_title}</MovieTitleH3>
+          <img src={API_IMG + poster_path}></img>
+          <UserRating>User-Rating: {vote_average}</UserRating>
+          <ReleaseDate>Release-Date: {release_date}</ReleaseDate>
+          <Runtime>Runtime: {runtime} Min.</Runtime>
+          <Overview>Overview: {overview}</Overview>
+        </MovieListItem>
+        );
       </MovieList>
     </>
   );
