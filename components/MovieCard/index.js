@@ -13,12 +13,13 @@ export default function MovieCard(
   overview
 ) {
   const [movies, setMovies] = useState([]);
+  const [activeItem, setActiveItem] = useState(undefined);
 
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data.results);
         setMovies(data.results);
       });
   }, []);
@@ -26,19 +27,17 @@ export default function MovieCard(
   return (
     <>
       <MovieList>
-        return (
-        {movies.map((movieReq) => (
-          <MovieCard />
+        {movies.map((movie, index) => (
+          <MovieListItem key={movie.id}>
+            <CardImage src={API_IMG + movie.poster_path}></CardImage>
+            <CardBody>
+              <UserRating>User-Rating: {movie.vote_average}</UserRating>
+              <MovieTitleH3>{movie.original_title}</MovieTitleH3>
+              <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
+              <Overview>Overview: {movie.overview}</Overview>
+            </CardBody>
+          </MovieListItem>
         ))}
-        <MovieListItem key={movieReq.id} {...movieReq}>
-          <MovieTitleH3>{original_title}</MovieTitleH3>
-          <img src={API_IMG + poster_path}></img>
-          <UserRating>User-Rating: {vote_average}</UserRating>
-          <ReleaseDate>Release-Date: {release_date}</ReleaseDate>
-          <Runtime>Runtime: {runtime} Min.</Runtime>
-          <Overview>Overview: {overview}</Overview>
-        </MovieListItem>
-        );
       </MovieList>
     </>
   );
@@ -47,12 +46,20 @@ export default function MovieCard(
 const MovieList = styled.ul`
   list-style-type: none;
   max-width: 450px;
+  padding-left: 0;
 `;
 
+const CardBody = styled.div`
+  padding: 16px;
+`;
+
+const CardImage = styled.img`
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
+  display: block;
+  border-radius: 8px;
+  width: 100%;
+`;
 const MovieListItem = styled.li`
-  border: 4px solid black;
-  padding: 8px;
-  margin: 25px;
   border-radius: 10px;
   background-color: var(--background-primary);
 `;
@@ -65,27 +72,42 @@ const MovieTitleH3 = styled.h3`
 
 const Poster = styled.p`
   border-radius: 10px;
+  color: rgba(0, 0, 0, 0.6);
   margin-top: 0;
   margin-bottom: 0;
 `;
 
 const UserRating = styled.p`
-  margin-top: 0;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  max-width: 10rem;
+  width: max-content;
+  z-index: 2;
+  background: #000000;
+  color: #ffffff;
+  font-size: 12px;
+  margin-left: auto;
+  border-radius: 99rem;
+  padding: 8px 12px;
   margin-bottom: 0;
 `;
 
 const ReleaseDate = styled.p`
   list-style-type: none;
-  margin-top: 0;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 12px;
   margin-bottom: 0;
 `;
 
 const Runtime = styled.p`
   margin-top: 0;
+  color: rgba(0, 0, 0, 0.6);
   margin-bottom: 0;
 `;
 
 const Overview = styled.p`
   list-style-type: none;
-  margin-top: 0;
+  margin-top: 6px;
+  color: rgba(0, 0, 0, 0.6);
 `;
