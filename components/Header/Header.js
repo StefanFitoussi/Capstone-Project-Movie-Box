@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
 
 const StyledH1 = styled.h1`
   text-align: center;
-  border: 2px solid var(--text-primary);
+  border: 2px solid black;
   padding: 0.25em 2em;
-  background-color: var(--background-primary);
+  background-color: white;
 `;

@@ -27,16 +27,16 @@ export default function MovieCard() {
             }}
           >
             <CardImage src={API_IMG + movie.poster_path}></CardImage>
-            <CardBody>
-              <UserRating>User-Rating: {movie.vote_average}</UserRating>
-              <MovieTitleH3>{movie.original_title}</MovieTitleH3>
-              {index === activeItem && (
-                <>
+            {index === activeItem && (
+              <>
+                <CardBody>
+                  <UserRating>User-Rating: {movie.vote_average}</UserRating>
+                  <MovieTitleH3>{movie.original_title}</MovieTitleH3>
                   <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
                   <Overview>Overview: {movie.overview}</Overview>
-                </>
-              )}
-            </CardBody>
+                </CardBody>
+              </>
+            )}
           </MovieListItem>
         ))}
       </MovieList>
@@ -63,14 +63,13 @@ const CardImage = styled.img`
 `;
 const MovieListItem = styled.li`
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 75px;
 `;
 
 const MovieTitleH3 = styled.h3`
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 0;
-  cursor: pointer;
 `;
 
 const UserRating = styled.p`
