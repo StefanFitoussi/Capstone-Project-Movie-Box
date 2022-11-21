@@ -4,20 +4,13 @@ const API_URL =
   "https://api.themoviedb.org/3/movie/popular?api_key=c02216a131e954f6cb9dc96daec0b215";
 const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
-export default function MovieCard(
-  original_title,
-  poster_path,
-  vote_average,
-  release_date,
-  overview
-) {
+export default function MovieCard() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
         setMovies(data.results);
       });
   }, []);
