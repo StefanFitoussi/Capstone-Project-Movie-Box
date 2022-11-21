@@ -6,6 +6,7 @@ const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 export default function MovieCard() {
   const [movies, setMovies] = useState([]);
+  const [activeItem, setActiveItem] = useState(undefined);
 
   useEffect(() => {
     fetch(API_URL)
@@ -18,14 +19,23 @@ export default function MovieCard() {
   return (
     <>
       <MovieList>
-        {movies.map((movie) => (
-          <MovieListItem key={movie.id}>
+        {movies.map((movie, index) => (
+          <MovieListItem
+            key={movie.id}
+            onClick={() => {
+              setActiveItem(index);
+            }}
+          >
             <CardImage src={API_IMG + movie.poster_path}></CardImage>
             <CardBody>
               <UserRating>User-Rating: {movie.vote_average}</UserRating>
               <MovieTitleH3>{movie.original_title}</MovieTitleH3>
-              <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
-              <Overview>Overview: {movie.overview}</Overview>
+              {index === activeItem && (
+                <>
+                  <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
+                  <Overview>Overview: {movie.overview}</Overview>
+                </>
+              )}
             </CardBody>
           </MovieListItem>
         ))}
@@ -49,6 +59,7 @@ const CardImage = styled.img`
   display: block;
   border-radius: 8px;
   width: 100%;
+  cursor: pointer;
 `;
 const MovieListItem = styled.li`
   border-radius: 10px;
@@ -59,6 +70,7 @@ const MovieTitleH3 = styled.h3`
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 0;
+  cursor: pointer;
 `;
 
 const UserRating = styled.p`
