@@ -1,19 +1,10 @@
 import styled from "styled-components";
-import Image from "next/image";
 import MovieCard from "../components/MovieCard";
 
 export default function Home() {
   return (
     <>
-      <Background>
-        <Image
-          src="https://images.unsplash.com/photo-1542204637-e67bc7d41e48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80"
-          alt="a movie reel"
-          layout="responsive"
-          width={2400}
-          height={3200}
-        />
-      </Background>
+      <Background />
       <StyledH2>Choose your Movies:</StyledH2>
       <MovieCard />
     </>

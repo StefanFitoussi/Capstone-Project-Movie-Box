@@ -9,11 +9,9 @@ export default function MovieCard(
   poster_path,
   vote_average,
   release_date,
-  runtime,
   overview
 ) {
   const [movies, setMovies] = useState([]);
-  const [activeItem, setActiveItem] = useState(undefined);
 
   useEffect(() => {
     fetch(API_URL)
@@ -27,7 +25,7 @@ export default function MovieCard(
   return (
     <>
       <MovieList>
-        {movies.map((movie, index) => (
+        {movies.map((movie) => (
           <MovieListItem key={movie.id}>
             <CardImage src={API_IMG + movie.poster_path}></CardImage>
             <CardBody>
@@ -61,18 +59,11 @@ const CardImage = styled.img`
 `;
 const MovieListItem = styled.li`
   border-radius: 10px;
-  background-color: var(--background-primary);
+  margin-bottom: 20px;
 `;
 
 const MovieTitleH3 = styled.h3`
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0;
-`;
-
-const Poster = styled.p`
-  border-radius: 10px;
-  color: rgba(0, 0, 0, 0.6);
   margin-top: 0;
   margin-bottom: 0;
 `;
@@ -83,7 +74,7 @@ const UserRating = styled.p`
   position: relative;
   max-width: 10rem;
   width: max-content;
-  z-index: 2;
+  z-index: 10;
   background: #000000;
   color: #ffffff;
   font-size: 12px;
@@ -97,12 +88,6 @@ const ReleaseDate = styled.p`
   list-style-type: none;
   color: rgba(0, 0, 0, 0.6);
   margin-top: 12px;
-  margin-bottom: 0;
-`;
-
-const Runtime = styled.p`
-  margin-top: 0;
-  color: rgba(0, 0, 0, 0.6);
   margin-bottom: 0;
 `;
 

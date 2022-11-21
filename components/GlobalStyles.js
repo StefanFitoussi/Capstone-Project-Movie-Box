@@ -15,7 +15,6 @@ const GlobalStyles = createGlobalStyle`
         display: flex;
         align-items: center;
         justify-content: center;
-        background-repeat: repeat-y;
     }
 
     * {
