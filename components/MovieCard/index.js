@@ -6,7 +6,7 @@ const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 export default function MovieCard() {
   const [movies, setMovies] = useState([]);
-  const [activeItem, setActiveItem] = useState(undefined);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     fetch(API_URL)
@@ -16,19 +16,21 @@ export default function MovieCard() {
       });
   }, []);
 
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <>
       <MovieList>
         {movies.map((movie, index) => (
-          <MovieListItem
-            key={movie.id}
-            onClick={() => {
-              setActiveItem(index);
-            }}
-          >
-            <CardImage src={API_IMG + movie.poster_path}></CardImage>
-            {index === activeItem && (
-              <>
+          <MovieListItem key={movie.id}>
+            <CardImage
+              onClick={handleClick}
+              src={API_IMG + movie.poster_path}
+            ></CardImage>
+            <>
+              {toggle ? (
                 <CardBody>
                   <UserRating>User-Rating: {movie.vote_average}</UserRating>
                   <StyledButton>+</StyledButton>
@@ -36,8 +38,10 @@ export default function MovieCard() {
                   <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
                   <Overview>Overview: {movie.overview}</Overview>
                 </CardBody>
-              </>
-            )}
+              ) : (
+                <></>
+              )}
+            </>
           </MovieListItem>
         ))}
       </MovieList>
