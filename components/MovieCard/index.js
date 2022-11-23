@@ -31,6 +31,7 @@ export default function MovieCard() {
               <>
                 <CardBody>
                   <UserRating>User-Rating: {movie.vote_average}</UserRating>
+                  <StyledButton>+</StyledButton>
                   <MovieTitleH3>{movie.original_title}</MovieTitleH3>
                   <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
                   <Overview>Overview: {movie.overview}</Overview>
@@ -68,7 +69,7 @@ const MovieListItem = styled.li`
 
 const MovieTitleH3 = styled.h3`
   font-weight: bold;
-  margin-top: 0;
+  margin-top: 1rem;
   margin-bottom: 0;
 `;
 
@@ -86,6 +87,22 @@ const UserRating = styled.p`
   border-radius: 99rem;
   padding: 8px 12px;
   margin-bottom: 0;
+`;
+
+const StyledButton = styled.button`
+  margin-top: -2.5rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: white;
+  background: black;
+  border: transparent;
+  position: absolute;
+  width: max-content;
+  margin-right: auto;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 99rem;
+  padding: 1px 20px 8px 20px;
 `;
 
 const ReleaseDate = styled.p`
