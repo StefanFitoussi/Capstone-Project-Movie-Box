@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function NavBar() {
   return (
     <>
       <StyledNavigation>
-        <StyledH3>NavBar</StyledH3>
+        <StyledLink href="/">
+          <img src="/Images/icons8-startseite-50.png" />
+          Hallo
+        </StyledLink>
       </StyledNavigation>
     </>
   );
@@ -19,13 +24,10 @@ const StyledNavigation = styled.nav`
   z-index: 100;
 `;
 
-const StyledH3 = styled.h3`
-  display: flex;
-  justify-content: space-evenly;
-  list-style: none;
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
-  border: 2px solid black;
+const StyledLink = styled(Link)`
+  text-align: center;
+  border: 2px solid black;#
+  height: 5rem;
+  padding: 0.5em 2em;
   background-color: white;
 `;

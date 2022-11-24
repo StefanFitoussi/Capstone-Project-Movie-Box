@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Header() {
   return (
     <StyledHeader>
-      <StyledH1>Movie-Box</StyledH1>
+      <StyledH1>Movie-X</StyledH1>
     </StyledHeader>
   );
 }
