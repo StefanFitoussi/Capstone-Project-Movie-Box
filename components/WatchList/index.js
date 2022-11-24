@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import MovieCard from "../MovieCard";
 
 export default function WatchList() {
   return (

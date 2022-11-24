@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function NavBar() {
@@ -8,7 +7,9 @@ export default function NavBar() {
       <StyledNavigation>
         <StyledLink href="/">
           <img src="/Images/icons8-startseite-50.png" />
-          Hallo
+        </StyledLink>
+        <StyledLink href="../WatchList">
+          <img src="/Images/icons8-lesezeichen-50.png" />
         </StyledLink>
       </StyledNavigation>
     </>

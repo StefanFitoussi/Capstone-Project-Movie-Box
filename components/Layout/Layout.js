@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Header from "../Header/Header";
-import NavBar from "../NavBar/Index";
+import NavBar from "../NavBar";
 
 function Layout({ children }) {
   return (
