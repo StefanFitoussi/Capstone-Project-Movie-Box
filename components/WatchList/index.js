@@ -4,7 +4,7 @@ import MovieCard from "../MovieCard";
 export default function WatchList() {
   return (
     <>
-      <StyledH2>Your watchlist:</StyledH2>
+      <StyledH2>Your watchlist</StyledH2>
     </>
   );
 }

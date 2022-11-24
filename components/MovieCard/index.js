@@ -33,7 +33,7 @@ export default function MovieCard() {
               {index === activeItem && toggleCardBody ? (
                 <CardBody>
                   <UserRating>User-Rating: {movie.vote_average}</UserRating>
-                  <StyledButton>+</StyledButton>
+                  <StyledBookmark>+</StyledBookmark>
                   <MovieTitleH3>{movie.original_title}</MovieTitleH3>
                   <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
                   <Overview>Overview: {movie.overview}</Overview>
@@ -93,12 +93,28 @@ const UserRating = styled.p`
   margin-bottom: 0;
 `;
 
-const StyledButton = styled.button`
+const StyledBookmark = styled.button`
   margin-top: -2.5rem;
   margin-bottom: 1rem;
   font-size: 2rem;
   color: white;
   background: black;
+  border: transparent;
+  position: absolute;
+  width: max-content;
+  margin-right: auto;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 99rem;
+  padding: 1px 20px 8px 20px;
+`;
+
+const StyledRemove = styled.button`
+  margin-top: -2.5rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: black;
+  background: white;
   border: transparent;
   position: absolute;
   width: max-content;

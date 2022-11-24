@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Header from "../Header/Header";
+import NavBar from "../NavBar/Index";
 
 function Layout({ children }) {
   return (
     <>
       <Header />
       <StyledMain>{children}</StyledMain>
+      <NavBar />
     </>
   );
 }
