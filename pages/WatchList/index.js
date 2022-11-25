@@ -9,5 +9,7 @@ export default function WatchList() {
 }
 
 const StyledH2 = styled.h2`
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 0.5px;
   margin-top: 35px;
 `;

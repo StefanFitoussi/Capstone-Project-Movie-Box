@@ -8,7 +8,7 @@ export default function NavBar() {
         <StyledLink href="/">
           <img src="/Images/icons8-startseite-50.png" />
         </StyledLink>
-        <StyledLink href="../WatchList">
+        <StyledLink href="/WatchList">
           <img src="/Images/icons8-lesezeichen-50.png" />
         </StyledLink>
       </StyledNavigation>
