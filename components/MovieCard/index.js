@@ -6,7 +6,8 @@ const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 export default function MovieCard() {
   const [movies, setMovies] = useState([]);
-  const [activeItem, setActiveItem] = useState(undefined);
+  const [activeItem, setActiveItem] = useState(-1);
+  const [toggleCardBody, setToggleCardBody] = useState(false);
 
   useEffect(() => {
     fetch(API_URL)
@@ -20,23 +21,27 @@ export default function MovieCard() {
     <>
       <MovieList>
         {movies.map((movie, index) => (
-          <MovieListItem
-            key={movie.id}
-            onClick={() => {
-              setActiveItem(index);
-            }}
-          >
-            <CardImage src={API_IMG + movie.poster_path}></CardImage>
-            {index === activeItem && (
-              <>
+          <MovieListItem key={movie.id}>
+            <CardImage
+              onClick={() => {
+                setActiveItem(index);
+                setToggleCardBody((toggleCardBody) => !toggleCardBody);
+              }}
+              src={API_IMG + movie.poster_path}
+            ></CardImage>
+            <>
+              {index === activeItem && toggleCardBody ? (
                 <CardBody>
                   <UserRating>User-Rating: {movie.vote_average}</UserRating>
+                  <StyledBookmark>+</StyledBookmark>
                   <MovieTitleH3>{movie.original_title}</MovieTitleH3>
                   <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
                   <Overview>Overview: {movie.overview}</Overview>
                 </CardBody>
-              </>
-            )}
+              ) : (
+                <></>
+              )}
+            </>
           </MovieListItem>
         ))}
       </MovieList>
@@ -68,7 +73,7 @@ const MovieListItem = styled.li`
 
 const MovieTitleH3 = styled.h3`
   font-weight: bold;
-  margin-top: 0;
+  margin-top: 1rem;
   margin-bottom: 0;
 `;
 
@@ -79,13 +84,45 @@ const UserRating = styled.p`
   max-width: 10rem;
   width: max-content;
   z-index: 10;
-  background: #000000;
-  color: #ffffff;
+  background: black;
+  color: orange;
   font-size: 12px;
   margin-left: auto;
   border-radius: 99rem;
   padding: 8px 12px;
   margin-bottom: 0;
+`;
+
+const StyledBookmark = styled.button`
+  margin-top: -2.5rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: orange;
+  background: black;
+  border: transparent;
+  position: absolute;
+  width: max-content;
+  margin-right: auto;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 99rem;
+  padding: 1px 20px 8px 20px;
+`;
+
+const StyledRemove = styled.button`
+  margin-top: -2.5rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: orange;
+  background: white;
+  border: transparent;
+  position: absolute;
+  width: max-content;
+  margin-right: auto;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 99rem;
+  padding: 1px 20px 8px 20px;
 `;
 
 const ReleaseDate = styled.p`
