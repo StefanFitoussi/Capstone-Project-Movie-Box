@@ -26,7 +26,7 @@ const StyledNavigation = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  border: 2px solid black;#
+border: 2px solid black;#
   height: 1rem;
   padding: 0.1em 3.65em 0.1em 3.65em;
   background-color: orange;

@@ -11,7 +11,7 @@ export default function Header() {
 const StyledHeader = styled.header`
   padding: 0 1rem;
   height: 5rem;
-  position: relative;
+  position: fixed;
   width: 100%;
   top: -0.5em;
   z-index: 100;
