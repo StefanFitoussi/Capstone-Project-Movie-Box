@@ -17,18 +17,18 @@ export default function NavBar() {
 }
 
 const StyledNavigation = styled.nav`
-  padding: 0 1rem;
-  height: 5rem;
+  display: flex;
+  padding: 0rem 1rem;
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: 0.8em;
   z-index: 100;
 `;
 
 const StyledLink = styled(Link)`
-  text-align: center;
   border: 2px solid black;#
-  height: 5rem;
-  padding: 0.5em 2em;
-  background-color: white;
+  height: 1rem;
+  padding: 0.1em 3.65em 0.1em 3.65em;
+  background-color: orange;
+  border-radius: 8px;
 `;

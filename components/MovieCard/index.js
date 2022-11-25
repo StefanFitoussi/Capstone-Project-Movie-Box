@@ -85,7 +85,7 @@ const UserRating = styled.p`
   width: max-content;
   z-index: 10;
   background: #000000;
-  color: #ffffff;
+  color: orange;
   font-size: 12px;
   margin-left: auto;
   border-radius: 99rem;
@@ -97,7 +97,7 @@ const StyledBookmark = styled.button`
   margin-top: -2.5rem;
   margin-bottom: 1rem;
   font-size: 2rem;
-  color: white;
+  color: orange;
   background: black;
   border: transparent;
   position: absolute;

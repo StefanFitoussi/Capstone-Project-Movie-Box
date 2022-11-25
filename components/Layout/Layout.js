@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Header from "../Header/Header";
+import Header from "../Header";
 import NavBar from "../NavBar";
 
 function Layout({ children }) {

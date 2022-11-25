@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
   height: 5rem;
   position: fixed;
   width: 100%;
-  top: 0;
+  top: -0.5em;
   z-index: 100;
 `;
 
@@ -21,5 +21,6 @@ const StyledH1 = styled.h1`
   text-align: center;
   border: 2px solid black;
   padding: 0.25em 2em;
-  background-color: white;
+  background-color: orange;
+  border-radius: 8px;
 `;
