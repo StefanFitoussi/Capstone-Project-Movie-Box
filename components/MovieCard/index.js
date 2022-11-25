@@ -84,7 +84,7 @@ const UserRating = styled.p`
   max-width: 10rem;
   width: max-content;
   z-index: 10;
-  background: #000000;
+  background: black;
   color: orange;
   font-size: 12px;
   margin-left: auto;
@@ -113,7 +113,7 @@ const StyledRemove = styled.button`
   margin-top: -2.5rem;
   margin-bottom: 1rem;
   font-size: 2rem;
-  color: black;
+  color: orange;
   background: white;
   border: transparent;
   position: absolute;
