@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import MovieCard from "../components/MovieCard";
+import PopularList from "../components/PopularList";
+import MovieCard from "../components/PopularList";
 
 export default function Home() {
   return (
     <>
       <StyledH2>Choose your Movies:</StyledH2>
-      <MovieCard />
+      <PopularList />
     </>
   );
 }

@@ -9,10 +9,12 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
-  padding: 0 1rem;
+  left: 50%;
+  transform: translatex(-50%);
   height: 5rem;
-  position: relative;
+  position: fixed;
   width: 100%;
+  max-width: 450px;
   top: -0.5em;
   z-index: 100;
 `;

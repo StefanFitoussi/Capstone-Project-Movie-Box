@@ -1,59 +1,76 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
-const API_URL =
-  "https://api.themoviedb.org/3/movie/popular?api_key=c02216a131e954f6cb9dc96daec0b215";
-const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
-export default function MovieCard() {
-  const [movies, setMovies] = useState([]);
-  const [activeItem, setActiveItem] = useState(-1);
-  const [toggleCardBody, setToggleCardBody] = useState(false);
+export default function MovieCard(props) {
+  const movie = props.movie;
 
-  useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-      });
-  }, []);
+  const index = props.index;
+  const setActiveItem = props.setActiveItem;
+  const isOpen = props.isOpen;
+  const isBookmarked = props.isBookmarked;
+  const saveBookmarks = props.saveBookmarks;
+
+  if (!movie) {
+    return (
+      <>
+        <br />
+        <h2>No movie data?!!?</h2>
+      </>
+    );
+  }
+
+  const saveToLocalStorage = () => {
+    const data = localStorage.getItem("movie-box-bookmarks");
+    const bookmarkedMovies = data ? JSON.parse(data) : [];
+
+    if (movie.id in bookmarkedMovies) {
+      delete bookmarkedMovies[movie.id];
+
+      localStorage.setItem(
+        "movie-box-bookmarks",
+        JSON.stringify(bookmarkedMovies)
+      );
+
+      saveBookmarks(bookmarkedMovies);
+    } else {
+      const bookmarksToSave = { ...bookmarkedMovies, [movie.id]: movie };
+      localStorage.setItem(
+        "movie-box-bookmarks",
+        JSON.stringify(bookmarksToSave)
+      );
+      saveBookmarks(bookmarksToSave);
+    }
+  };
 
   return (
-    <>
-      <MovieList>
-        {movies.map((movie, index) => (
-          <MovieListItem key={movie.id}>
-            <CardImage
-              onClick={() => {
-                setActiveItem(index);
-                setToggleCardBody((toggleCardBody) => !toggleCardBody);
-              }}
-              src={API_IMG + movie.poster_path}
-            ></CardImage>
-            <>
-              {index === activeItem && toggleCardBody ? (
-                <CardBody>
-                  <UserRating>User-Rating: {movie.vote_average}</UserRating>
-                  <StyledBookmark>+</StyledBookmark>
-                  <MovieTitleH3>{movie.original_title}</MovieTitleH3>
-                  <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
-                  <Overview>Overview: {movie.overview}</Overview>
-                </CardBody>
-              ) : (
-                <></>
-              )}
-            </>
-          </MovieListItem>
-        ))}
-      </MovieList>
-    </>
+    <MovieListItem key={movie.id}>
+      <CardImage
+        onClick={() => {
+          if (isOpen) {
+            setActiveItem(undefined);
+            return;
+          }
+          setActiveItem(index);
+        }}
+        src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+      ></CardImage>
+      <>
+        {isOpen ? (
+          <CardBody>
+            <UserRating>User-Rating: {movie.vote_average}</UserRating>
+            <StyledBookmark onClick={saveToLocalStorage}>
+              {isBookmarked ? "-" : "+"}
+            </StyledBookmark>
+            <MovieTitleH3>{movie.original_title}</MovieTitleH3>
+            <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
+            <Overview>Overview: {movie.overview}</Overview>
+          </CardBody>
+        ) : (
+          <></>
+        )}
+      </>
+    </MovieListItem>
   );
 }
-
-const MovieList = styled.ul`
-  list-style-type: none;
-  max-width: 450px;
-  padding-left: 0;
-`;
 
 const CardBody = styled.div`
   padding: 16px;
@@ -94,8 +111,7 @@ const UserRating = styled.p`
 `;
 
 const StyledBookmark = styled.button`
-  margin-top: -2.5rem;
-  margin-bottom: 1rem;
+  margin: -2.5rem 0 1rem 0;
   font-size: 2rem;
   color: orange;
   background: black;
