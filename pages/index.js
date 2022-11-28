@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import PopularList from "../components/PopularList";
-import MovieCard from "../components/PopularList";
 
 export default function Home() {
   return (
@@ -11,12 +10,8 @@ export default function Home() {
   );
 }
 
-const StyledHome = styled.p`
-  top: 0;
-`;
-
 const StyledH2 = styled.h2`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 0.5px;
-  margin-top: 0;
+  padding-top: 5.5rem;
 `;

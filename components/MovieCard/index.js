@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export default function MovieCard(props) {
   const movie = props.movie;
-
   const index = props.index;
   const setActiveItem = props.setActiveItem;
   const isOpen = props.isOpen;
@@ -12,8 +11,7 @@ export default function MovieCard(props) {
   if (!movie) {
     return (
       <>
-        <br />
-        <h2>No movie data?!!?</h2>
+        <StyledH2>No movie data...</StyledH2>
       </>
     );
   }
@@ -72,13 +70,18 @@ export default function MovieCard(props) {
   );
 }
 
+const StyledH2 = styled.h2`
+  padding-top: 5rem;
+  text-align: left;
+`;
+
 const CardBody = styled.div`
   padding: 16px;
 `;
 
 const CardImage = styled.img`
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  display: block;
+  d-isplay: block;
   border-radius: 8px;
   width: 100%;
   cursor: pointer;
@@ -115,22 +118,6 @@ const StyledBookmark = styled.button`
   font-size: 2rem;
   color: orange;
   background: black;
-  border: transparent;
-  position: absolute;
-  width: max-content;
-  margin-right: auto;
-  z-index: 10;
-  cursor: pointer;
-  border-radius: 99rem;
-  padding: 1px 20px 8px 20px;
-`;
-
-const StyledRemove = styled.button`
-  margin-top: -2.5rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  color: orange;
-  background: white;
   border: transparent;
   position: absolute;
   width: max-content;
