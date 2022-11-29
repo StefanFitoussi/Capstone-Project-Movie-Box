@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export default function MovieCard(props) {
-  const movie = props.movie;
-  const index = props.index;
-  const setActiveItem = props.setActiveItem;
-  const isOpen = props.isOpen;
-  const isBookmarked = props.isBookmarked;
-  const saveBookmarks = props.saveBookmarks;
-
+export default function MovieCard({
+  isOpen,
+  movie,
+  setActiveItem,
+  index,
+  onToggleBookmark,
+  bookmarks,
+}) {
   if (!movie) {
     return (
       <>
@@ -16,31 +16,8 @@ export default function MovieCard(props) {
     );
   }
 
-  const saveToLocalStorage = () => {
-    const data = localStorage.getItem("movie-box-bookmarks");
-    const bookmarkedMovies = data ? JSON.parse(data) : [];
-
-    if (movie.id in bookmarkedMovies) {
-      delete bookmarkedMovies[movie.id];
-
-      localStorage.setItem(
-        "movie-box-bookmarks",
-        JSON.stringify(bookmarkedMovies)
-      );
-
-      saveBookmarks(bookmarkedMovies);
-    } else {
-      const bookmarksToSave = { ...bookmarkedMovies, [movie.id]: movie };
-      localStorage.setItem(
-        "movie-box-bookmarks",
-        JSON.stringify(bookmarksToSave)
-      );
-      saveBookmarks(bookmarksToSave);
-    }
-  };
-
   return (
-    <MovieListItem key={movie.id}>
+    <MovieListItem>
       <CardImage
         onClick={() => {
           if (isOpen) {
@@ -55,8 +32,8 @@ export default function MovieCard(props) {
         {isOpen ? (
           <CardBody>
             <UserRating>User-Rating: {movie.vote_average}</UserRating>
-            <StyledBookmark onClick={saveToLocalStorage}>
-              {isBookmarked ? "-" : "+"}
+            <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
+              {bookmarks.includes(movie.id) ? "-" : "+"}
             </StyledBookmark>
             <MovieTitleH3>{movie.original_title}</MovieTitleH3>
             <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>

@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import PopularList from "../components/PopularList";
 
-export default function Home() {
+export default function Home({ movies, onToggleBookmark, bookmarks }) {
   return (
     <>
       <StyledH2>Choose your Movies:</StyledH2>
-      <PopularList />
+      <PopularList
+        movies={movies}
+        onToggleBookmark={onToggleBookmark}
+        bookmarks={bookmarks}
+      />
     </>
   );
 }
