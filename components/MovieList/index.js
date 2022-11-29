@@ -2,12 +2,12 @@ import { useState } from "react";
 import MovieCard from "../MovieCard";
 import styled from "styled-components";
 
-export default function PopularList({ movies, onToggleBookmark, bookmarks }) {
+export default function MovieList({ movies, onToggleBookmark, bookmarks }) {
   const [activeItem, setActiveItem] = useState();
 
   return (
     <>
-      <MovieList>
+      <FilmList>
         {movies.map((movie, index) => (
           <MovieCard
             key={movie.id}
@@ -19,12 +19,12 @@ export default function PopularList({ movies, onToggleBookmark, bookmarks }) {
             bookmarks={bookmarks}
           ></MovieCard>
         ))}
-      </MovieList>
+      </FilmList>
     </>
   );
 }
 
-const MovieList = styled.ul`
+const FilmList = styled.ul`
   list-style-type: none;
   max-width: 450px;
   padding-left: 0;

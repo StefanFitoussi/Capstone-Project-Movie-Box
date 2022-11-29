@@ -33,7 +33,7 @@ export default function MovieCard({
           <CardBody>
             <UserRating>User-Rating: {movie.vote_average}</UserRating>
             <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
-              {bookmarks.includes(movie.id) ? "-" : "+"}
+              {bookmarks.includes(movie.id) ? "REMOVE" : "ADD"}
             </StyledBookmark>
             <MovieTitleH3>{movie.original_title}</MovieTitleH3>
             <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
@@ -75,7 +75,7 @@ const MovieTitleH3 = styled.h3`
 `;
 
 const UserRating = styled.p`
-  margin-top: -2rem;
+  margin-top: -2.5rem;
   margin-bottom: 1rem;
   position: relative;
   max-width: 10rem;
@@ -91,8 +91,7 @@ const UserRating = styled.p`
 `;
 
 const StyledBookmark = styled.button`
-  margin: -2.5rem 0 1rem 0;
-  font-size: 2rem;
+  margin: -1.95rem 0 1rem 0;
   color: orange;
   background: black;
   border: transparent;
@@ -102,7 +101,7 @@ const StyledBookmark = styled.button`
   z-index: 10;
   cursor: pointer;
   border-radius: 99rem;
-  padding: 1px 20px 8px 20px;
+  padding: 8px 25px;
 `;
 
 const ReleaseDate = styled.p`

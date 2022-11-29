@@ -40,7 +40,7 @@ const StyledH2 = styled.h2`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 0.5px;
   margin-top: 6.5rem;
-  margin-bottom: 0;
+  margin-bottom: 1.5rem;
 `;
 const StyledH3 = styled.h3`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
