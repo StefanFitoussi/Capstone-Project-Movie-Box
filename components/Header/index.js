@@ -11,7 +11,6 @@ export default function Header() {
 const StyledHeader = styled.header`
   display: inline-block;
   padding: 1rem;
-  height: 5rem;
   position: fixed;
   width: 100%;
   max-width: 450px;
@@ -22,7 +21,7 @@ const StyledHeader = styled.header`
 const StyledH1 = styled.h1`
   text-align: center;
   border: 2px solid black;
-  padding: 0.2em;
+  padding: 0.15em;
   background-color: orange;
   border-radius: 8px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;

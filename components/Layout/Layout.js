@@ -14,7 +14,7 @@ function Layout({ children }) {
 
 const StyledMain = styled.main`
   margin: 0;
-  padding: 1rem;
+  padding: 2rem;
   min-height: calc(100vh - 8rem);
   margin-top: 0;
 `;

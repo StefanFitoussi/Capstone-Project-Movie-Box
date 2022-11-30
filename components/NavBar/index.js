@@ -28,7 +28,7 @@ const StyledNavigation = styled.nav`
 const StyledLink = styled(Link)`
 border: 2px solid black;#
   height: 1rem;
-  padding: 0.2em 1.5em;
+  padding: 0.2em 1em 0em 1em;
   background-color: orange;
   border-radius: 8px;
 `;

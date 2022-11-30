@@ -54,7 +54,7 @@ const StyledH2 = styled.h2`
 
 const CardBody = styled.div`
   padding: 16px;
-  margin-top: -1.2rem;
+  margin-top: -1.5rem;
 `;
 
 const CardImage = styled.img`
@@ -87,11 +87,13 @@ const UserRating = styled.p`
   border-radius: 99rem;
   padding: 8px 12px;
   margin-bottom: 0;
+  letter-spacing: 0.5px;
 `;
 
 const StyledBookmark = styled.button`
   margin: -2rem 0 0 1rem;
   color: orange;
+  font-size: 12px;
   background: black;
   border: transparent;
   position: absolute;
@@ -101,6 +103,7 @@ const StyledBookmark = styled.button`
   cursor: pointer;
   border-radius: 99rem;
   padding: 8px 25px;
+  letter-spacing: 0.5px;
 `;
 
 const ReleaseDate = styled.p`
