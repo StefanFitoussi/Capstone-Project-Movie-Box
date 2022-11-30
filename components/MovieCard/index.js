@@ -29,12 +29,12 @@ export default function MovieCard({
         src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
       ></CardImage>
       <>
+        <UserRating>User-Rating: {movie.vote_average}</UserRating>
+        <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
+          {bookmarks.includes(movie.id) ? "REMOVE" : "ADD"}
+        </StyledBookmark>
         {isOpen ? (
           <CardBody>
-            <UserRating>User-Rating: {movie.vote_average}</UserRating>
-            <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
-              {bookmarks.includes(movie.id) ? "REMOVE" : "ADD"}
-            </StyledBookmark>
             <MovieTitleH3>{movie.original_title}</MovieTitleH3>
             <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
             <Overview>Overview: {movie.overview}</Overview>
@@ -54,6 +54,7 @@ const StyledH2 = styled.h2`
 
 const CardBody = styled.div`
   padding: 16px;
+  margin-top: -1.2rem;
 `;
 
 const CardImage = styled.img`
@@ -75,10 +76,8 @@ const MovieTitleH3 = styled.h3`
 `;
 
 const UserRating = styled.p`
-  margin-top: -2.5rem;
-  margin-bottom: 1rem;
+  margin: -1.2rem 1rem 0 0;
   position: relative;
-  max-width: 10rem;
   width: max-content;
   z-index: 10;
   background: black;
@@ -91,7 +90,7 @@ const UserRating = styled.p`
 `;
 
 const StyledBookmark = styled.button`
-  margin: -1.95rem 0 1rem 0;
+  margin: -2rem 0 0 1rem;
   color: orange;
   background: black;
   border: transparent;
