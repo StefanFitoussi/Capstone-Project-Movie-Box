@@ -9,7 +9,7 @@ export default function WatchList({ movies, bookmarks, onToggleBookmark }) {
   );
   return (
     <>
-      <StyledH2>Your watchlist</StyledH2>
+      <StyledH2>Your Watchlist</StyledH2>
       {bookmarkedMovies.length === 0 ? (
         <StyledH3>No movies here yet...</StyledH3>
       ) : (
