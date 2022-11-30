@@ -9,21 +9,23 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
-  padding: 0 1rem;
+  display: inline-block;
+  padding: 1rem;
   height: 5rem;
-  position: relative;
+  position: fixed;
   width: 100%;
-  top: -0.5em;
+  max-width: 450px;
+  top: -1.6em;
   z-index: 100;
 `;
 
 const StyledH1 = styled.h1`
   text-align: center;
   border: 2px solid black;
-  padding: 0.25em 2em;
+  padding: 0.2em;
   background-color: orange;
   border-radius: 8px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  letter-spacing: 2.5px;
+  letter-spacing: 2.2px;
   font-size: 2.4rem;
 `;

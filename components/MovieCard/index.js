@@ -1,58 +1,55 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
-const API_URL =
-  "https://api.themoviedb.org/3/movie/popular?api_key=c02216a131e954f6cb9dc96daec0b215";
-const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
-export default function MovieCard() {
-  const [movies, setMovies] = useState([]);
-  const [activeItem, setActiveItem] = useState(-1);
-  const [toggleCardBody, setToggleCardBody] = useState(false);
-
-  useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-      });
-  }, []);
+export default function MovieCard({
+  isOpen,
+  movie,
+  setActiveItem,
+  index,
+  onToggleBookmark,
+  bookmarks,
+}) {
+  if (!movie) {
+    return (
+      <>
+        <StyledH2>No movie data...</StyledH2>
+      </>
+    );
+  }
 
   return (
-    <>
-      <MovieList>
-        {movies.map((movie, index) => (
-          <MovieListItem key={movie.id}>
-            <CardImage
-              onClick={() => {
-                setActiveItem(index);
-                setToggleCardBody((toggleCardBody) => !toggleCardBody);
-              }}
-              src={API_IMG + movie.poster_path}
-            ></CardImage>
-            <>
-              {index === activeItem && toggleCardBody ? (
-                <CardBody>
-                  <UserRating>User-Rating: {movie.vote_average}</UserRating>
-                  <StyledBookmark>+</StyledBookmark>
-                  <MovieTitleH3>{movie.original_title}</MovieTitleH3>
-                  <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
-                  <Overview>Overview: {movie.overview}</Overview>
-                </CardBody>
-              ) : (
-                <></>
-              )}
-            </>
-          </MovieListItem>
-        ))}
-      </MovieList>
-    </>
+    <MovieListItem>
+      <CardImage
+        onClick={() => {
+          if (isOpen) {
+            setActiveItem(undefined);
+            return;
+          }
+          setActiveItem(index);
+        }}
+        src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+      ></CardImage>
+      <>
+        {isOpen ? (
+          <CardBody>
+            <UserRating>User-Rating: {movie.vote_average}</UserRating>
+            <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
+              {bookmarks.includes(movie.id) ? "REMOVE" : "ADD"}
+            </StyledBookmark>
+            <MovieTitleH3>{movie.original_title}</MovieTitleH3>
+            <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
+            <Overview>Overview: {movie.overview}</Overview>
+          </CardBody>
+        ) : (
+          <></>
+        )}
+      </>
+    </MovieListItem>
   );
 }
 
-const MovieList = styled.ul`
-  list-style-type: none;
-  max-width: 450px;
-  padding-left: 0;
+const StyledH2 = styled.h2`
+  padding-top: 5rem;
+  text-align: left;
 `;
 
 const CardBody = styled.div`
@@ -61,7 +58,7 @@ const CardBody = styled.div`
 
 const CardImage = styled.img`
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  display: block;
+  d-isplay: block;
   border-radius: 8px;
   width: 100%;
   cursor: pointer;
@@ -78,7 +75,7 @@ const MovieTitleH3 = styled.h3`
 `;
 
 const UserRating = styled.p`
-  margin-top: -2rem;
+  margin-top: -2.5rem;
   margin-bottom: 1rem;
   position: relative;
   max-width: 10rem;
@@ -94,9 +91,7 @@ const UserRating = styled.p`
 `;
 
 const StyledBookmark = styled.button`
-  margin-top: -2.5rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  margin: -1.95rem 0 1rem 0;
   color: orange;
   background: black;
   border: transparent;
@@ -106,23 +101,7 @@ const StyledBookmark = styled.button`
   z-index: 10;
   cursor: pointer;
   border-radius: 99rem;
-  padding: 1px 20px 8px 20px;
-`;
-
-const StyledRemove = styled.button`
-  margin-top: -2.5rem;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  color: orange;
-  background: white;
-  border: transparent;
-  position: absolute;
-  width: max-content;
-  margin-right: auto;
-  z-index: 10;
-  cursor: pointer;
-  border-radius: 99rem;
-  padding: 1px 20px 8px 20px;
+  padding: 8px 25px;
 `;
 
 const ReleaseDate = styled.p`
