@@ -53,7 +53,7 @@ const StyledH2 = styled.h2`
 `;
 
 const CardBody = styled.div`
-  padding: 16px;
+  padding: 1rem;
   margin-top: -1.5rem;
 `;
 
@@ -66,7 +66,7 @@ const CardImage = styled.img`
 `;
 const MovieListItem = styled.li`
   border-radius: 10px;
-  margin-bottom: 75px;
+  margin: -0.5rem 0 5rem 0;
 `;
 
 const MovieTitleH3 = styled.h3`
@@ -76,6 +76,7 @@ const MovieTitleH3 = styled.h3`
 `;
 
 const UserRating = styled.p`
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
   margin: -1.2rem 1rem 0 0;
   position: relative;
   width: max-content;
@@ -95,7 +96,6 @@ const StyledBookmark = styled.button`
   color: orange;
   font-size: 12px;
   background: black;
-  border: transparent;
   position: absolute;
   width: max-content;
   margin-right: auto;

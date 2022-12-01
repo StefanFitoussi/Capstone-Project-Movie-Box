@@ -11,7 +11,7 @@ export default function WatchList({ movies, bookmarks, onToggleBookmark }) {
     <>
       <StyledH2>Your Watchlist</StyledH2>
       {bookmarkedMovies.length === 0 ? (
-        <StyledH3>No movies here yet...</StyledH3>
+        <StyledMessage>No movies here yet...</StyledMessage>
       ) : (
         <MovieList>
           {bookmarkedMovies.map((movie, index) => (
@@ -39,11 +39,13 @@ export default function WatchList({ movies, bookmarks, onToggleBookmark }) {
 const StyledH2 = styled.h2`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 0.5px;
-  margin-top: 6.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  margin-top: 4.5rem;
+  margin-bottom: 1rem;
 `;
-const StyledH3 = styled.h3`
+const StyledMessage = styled.p`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.1rem;
   letter-spacing: 0.5px;
   margin-top: 0;
 `;
