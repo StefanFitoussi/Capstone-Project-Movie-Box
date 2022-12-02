@@ -31,19 +31,16 @@ export default function WatchList({ movies, bookmarks, onToggleBookmark }) {
   );
 }
 
-// const StyledDiv = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
-
 const StyledH2 = styled.h2`
+  text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 0.5px;
   font-size: 1.5rem;
-  margin-top: 4.5rem;
+  margin-top: 5.3rem;
   margin-bottom: 1rem;
 `;
 const StyledMessage = styled.p`
+  text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.1rem;
   letter-spacing: 0.5px;

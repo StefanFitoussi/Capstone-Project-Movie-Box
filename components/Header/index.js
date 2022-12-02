@@ -12,19 +12,21 @@ const StyledHeader = styled.header`
   display: inline-block;
   padding: 1rem;
   position: fixed;
+  height: 5rem;
   width: 100%;
   max-width: 450px;
-  top: -1.6em;
+  top: -2em;
   z-index: 100;
 `;
 
 const StyledH1 = styled.h1`
   text-align: center;
-  border: 2px solid black;
+  border: 7px outset;
   padding: 0.15em;
-  background-color: orange;
+  color: orange;
+  background-color: black;
   border-radius: 8px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 2.2px;
-  font-size: 2.4rem;
+  font-size: 2.5rem;
 `;

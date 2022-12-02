@@ -54,19 +54,18 @@ const StyledH2 = styled.h2`
 
 const CardBody = styled.div`
   padding: 1rem;
-  margin-top: -1.5rem;
+  margin-top: -1.2rem;
 `;
 
 const CardImage = styled.img`
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  d-isplay: block;
   border-radius: 8px;
   width: 100%;
   cursor: pointer;
 `;
 const MovieListItem = styled.li`
   border-radius: 10px;
-  margin: -0.5rem 0 5rem 0;
+  margin: -0.6rem 0 7rem 0;
 `;
 
 const MovieTitleH3 = styled.h3`
@@ -77,7 +76,7 @@ const MovieTitleH3 = styled.h3`
 
 const UserRating = styled.p`
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  margin: -1.2rem 1rem 0 0;
+  margin: -1.3rem 1rem 0 0;
   position: relative;
   width: max-content;
   z-index: 10;
@@ -85,14 +84,15 @@ const UserRating = styled.p`
   color: orange;
   font-size: 12px;
   margin-left: auto;
-  border-radius: 99rem;
+  border-radius: 8px;
   padding: 8px 12px;
   margin-bottom: 0;
   letter-spacing: 0.5px;
 `;
 
 const StyledBookmark = styled.button`
-  margin: -2rem 0 0 1rem;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
+  margin: -2.2rem 0 0 1rem;
   color: orange;
   font-size: 12px;
   background: black;
@@ -101,7 +101,8 @@ const StyledBookmark = styled.button`
   margin-right: auto;
   z-index: 10;
   cursor: pointer;
-  border-radius: 99rem;
+  border: outset;
+  border-radius: 8px;
   padding: 8px 25px;
   letter-spacing: 0.5px;
 `;
