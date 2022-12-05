@@ -37,7 +37,7 @@ const StyledH2 = styled.h2`
   letter-spacing: 0.5px;
   font-size: 1.5rem;
   margin-top: 5.3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 `;
 const StyledMessage = styled.p`
   text-align: center;

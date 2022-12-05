@@ -2,9 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
     :root {
-        --text-primary: #000000;
-        --text-secondary: #013220;
-        --background-primary: #FFFFFF;
     }
 
     html,

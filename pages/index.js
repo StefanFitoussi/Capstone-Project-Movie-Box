@@ -1,22 +1,89 @@
 import styled from "styled-components";
 import MovieList from "../components/MovieList";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Home({ movies, onToggleBookmark, bookmarks }) {
+  const [listType, setListType] = useState("popular");
+  const [displayedMovies, setDisplayedMovies] = useState(movies);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+  const router = useRouter();
+
+  const fetchMovies = async () => {
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${listType}?api_key=c02216a131e954f6cb9dc96daec0b215`
+      );
+
+      setLoading(false);
+
+      const data = await response.json();
+
+      if (listType === "latest") {
+        setDisplayedMovies([data]);
+        return;
+      }
+
+      setDisplayedMovies(data.results);
+    } catch (error) {
+      setError("Houston we have a proble: " + error);
+    }
+  };
+
+  useEffect(() => {
+    if (listType === "popular") {
+      setDisplayedMovies(movies);
+    }
+
+    fetchMovies();
+  }, [listType]);
+
   return (
     <>
       <StyledChoice1>Choose you Style</StyledChoice1>
       <StyledCategory>
-        <StyledList>popular</StyledList>
-        <StyledList>top-rated</StyledList>
-        <StyledList>upcoming</StyledList>
-        <StyledList>latest</StyledList>
+        <StyledList
+          active={listType === "popular"}
+          onClick={() => setListType("popular")}
+        >
+          popular
+        </StyledList>
+        <StyledList
+          active={listType === "top_rated"}
+          onClick={() => setListType("top_rated")}
+        >
+          top-rated
+        </StyledList>
+        <StyledList
+          active={listType === "upcoming"}
+          onClick={() => setListType("upcoming")}
+        >
+          upcoming
+        </StyledList>
+        {/* <StyledList
+          active={listType === "latest"}
+          onClick={() => setListType("latest")}
+        >
+          latest
+        </StyledList> */}
       </StyledCategory>
       <StyledChoice2>Choose your Movies</StyledChoice2>
-      <MovieList
-        movies={movies}
-        onToggleBookmark={onToggleBookmark}
-        bookmarks={bookmarks}
-      />
+
+      {loading ? "Now loading boss..." : ""}
+
+      {error ? (
+        error
+      ) : (
+        <MovieList
+          movies={displayedMovies}
+          onToggleBookmark={onToggleBookmark}
+          bookmarks={bookmarks}
+        />
+      )}
     </>
   );
 }
@@ -26,7 +93,7 @@ const StyledChoice1 = styled.p`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.5rem;
   letter-spacing: 0.5px;
-  margin: 4.9rem 0 -0.7rem 0;
+  margin: 5.2rem 0 -0.6rem 0;
 `;
 
 const StyledCategory = styled.p`
@@ -38,15 +105,26 @@ const StyledCategory = styled.p`
 `;
 
 const StyledList = styled.button`
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  font-size: 13.5px;
+  box-sh-adow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
+  font-size: 13.9px;
   font-weight: bold;
   color: orange;
   background: black;
-  border: outset;
+  border: 3px outset black;
   border-radius: 99rem;
-  padding: 0.5rem 0.5em 0.5rem 0.5em;
+  padding: 0.7em 0.5em 0.9em 0.5em;
   cursor: pointer;
+  text-decoration: none;
+
+  ${({ active }) =>
+    active &&
+    `
+background: blue;
+`}
+
+  &:active {
+    border: 3px inset black;
+  }
 `;
 
 const StyledChoice2 = styled.p`
@@ -54,5 +132,5 @@ const StyledChoice2 = styled.p`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.5rem;
   letter-spacing: 0.5px;
-  margin: 2.2rem 0 1rem 0;
+  margin: 3rem 0 1.1rem 0;
 `;

@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
+  const router = useRouter();
+
   return (
     <StyledNavigation>
-      <StyledLink1 href="/">HOME</StyledLink1>
-      <StyledLink2 href="/WatchList">LIST</StyledLink2>
+      <StyledLink active={router.asPath === "/"} href="/" className="active">
+        HOME
+      </StyledLink>
+      <StyledLink active={router.asPath === "/WatchList"} href="/WatchList">
+        LIST
+      </StyledLink>
     </StyledNavigation>
   );
 }
@@ -24,30 +31,25 @@ const StyledNavigation = styled.nav`
   max-width: 450px;
 `;
 
-const StyledLink1 = styled(Link)`
-border: 5px outset;#
+const StyledLink = styled(Link)`
+border: 5px outset black;#
   height: 1rem;
   color: orange;
   background-color: black;
-  border-radius: 99rem;
+  border-radius: 8px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.4rem;
   text-decoration: none;
   text-align: center;
   padding: 0.55em 1em 0.5em 1em;
   cursor: pointer;
-`;
+  &:active {
+    border: 5px inset black;
+  }
 
-const StyledLink2 = styled(Link)`
-border: 5px outset;#
-  height: 1rem;
-  color: orange;
-  background-color: black;
-  border-radius: 99rem;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 1.4rem;
-  text-decoration: none;
-  text-align: center;
-  padding: 0.55em 1.4em 0.5em 1.4em;
-  cursor: pointer;
+  ${({ active }) =>
+    active &&
+    `
+  background: blue;
+`}
 `;

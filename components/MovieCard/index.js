@@ -83,8 +83,9 @@ const UserRating = styled.p`
   background: black;
   color: orange;
   font-size: 12px;
+  font-weight: bold;
   margin-left: auto;
-  border-radius: 8px;
+  border-radius: 99rem;
   padding: 8px 12px;
   margin-bottom: 0;
   letter-spacing: 0.5px;
@@ -95,16 +96,20 @@ const StyledBookmark = styled.button`
   margin: -2.2rem 0 0 1rem;
   color: orange;
   font-size: 12px;
+  font-weight: bold;
   background: black;
   position: absolute;
   width: max-content;
   margin-right: auto;
   z-index: 10;
   cursor: pointer;
-  border: outset;
-  border-radius: 8px;
+  border: 3px outset black;
+  border-radius: 99rem;
   padding: 8px 25px;
   letter-spacing: 0.5px;
+  &:active {
+    border: 3px inset black;
+  }
 `;
 
 const ReleaseDate = styled.p`

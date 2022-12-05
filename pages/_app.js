@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }) {
   const [bookmarks, setBookmarks] = useLocalStorage("movieFavorites", []);
 
   useEffect(() => {
-    // get api data
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {

@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function Header() {
   return (
-    <StyledHeader>
-      <StyledH1>Movie-Box</StyledH1>
+    <StyledHeader href="/">
+      <Title>Movie-Box</Title>
     </StyledHeader>
   );
 }
 
-const StyledHeader = styled.header`
+const StyledHeader = styled(Link)`
   display: inline-block;
   padding: 1rem;
   position: fixed;
@@ -17,11 +18,12 @@ const StyledHeader = styled.header`
   max-width: 450px;
   top: -2em;
   z-index: 100;
+  text-decoration: none;
 `;
 
-const StyledH1 = styled.h1`
+const Title = styled.h1`
   text-align: center;
-  border: 7px outset;
+  border: 7px outset black;
   padding: 0.15em;
   color: orange;
   background-color: black;
@@ -29,4 +31,7 @@ const StyledH1 = styled.h1`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 2.2px;
   font-size: 2.5rem;
+  &:active {
+    border: 7px inset black;
+  }
 `;
