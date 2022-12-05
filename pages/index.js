@@ -61,12 +61,6 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
         >
           upcoming
         </StyledList>
-        {/* <StyledList
-          active={listType === "latest"}
-          onClick={() => setListType("latest")}
-        >
-          latest
-        </StyledList> */}
       </StyledCategory>
       <StyledChoice2>Choose your Movies</StyledChoice2>
 
