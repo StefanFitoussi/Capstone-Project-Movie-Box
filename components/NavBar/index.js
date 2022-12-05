@@ -7,12 +7,12 @@ export default function NavBar() {
 
   return (
     <StyledNavigation>
-      <StyledLink active={router.asPath === "/"} href="/" className="active">
+      <StyledLink1 active={router.asPath === "/"} href="/" className="active">
         HOME
-      </StyledLink>
-      <StyledLink active={router.asPath === "/WatchList"} href="/WatchList">
+      </StyledLink1>
+      <StyledLink2 active={router.asPath === "/WatchList"} href="/WatchList">
         LIST
-      </StyledLink>
+      </StyledLink2>
     </StyledNavigation>
   );
 }
@@ -31,7 +31,7 @@ const StyledNavigation = styled.nav`
   max-width: 450px;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink1 = styled(Link)`
 border: 5px outset black;#
   height: 1rem;
   color: orange;
@@ -43,13 +43,28 @@ border: 5px outset black;#
   text-align: center;
   padding: 0.55em 1em 0.5em 1em;
   cursor: pointer;
-  &:active {
-    border: 5px inset black;
-  }
-
   ${({ active }) =>
     active &&
     `
-  background: blue;
+    border: 5px inset orange;
+`}
+`;
+
+const StyledLink2 = styled(Link)`
+border: 5px outset black;#
+  height: 1rem;
+  color: orange;
+  background-color: black;
+  border-radius: 8px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.4rem;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.55em 1.25em 0.5em 1.25em;
+  cursor: pointer;
+  ${({ active }) =>
+    active &&
+    `
+    border: 5px inset orange;
 `}
 `;

@@ -107,9 +107,6 @@ const StyledBookmark = styled.button`
   border-radius: 99rem;
   padding: 8px 25px;
   letter-spacing: 0.5px;
-  &:active {
-    border: 3px inset black;
-  }
 `;
 
 const ReleaseDate = styled.p`

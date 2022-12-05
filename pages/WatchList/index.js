@@ -39,6 +39,7 @@ const StyledH2 = styled.h2`
   margin-top: 5.3rem;
   margin-bottom: 1.2rem;
 `;
+
 const StyledMessage = styled.p`
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;

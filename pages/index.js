@@ -1,15 +1,12 @@
 import styled from "styled-components";
 import MovieList from "../components/MovieList";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 export default function Home({ movies, onToggleBookmark, bookmarks }) {
   const [listType, setListType] = useState("popular");
   const [displayedMovies, setDisplayedMovies] = useState(movies);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const router = useRouter();
 
   const fetchMovies = async () => {
     try {
@@ -30,7 +27,7 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
 
       setDisplayedMovies(data.results);
     } catch (error) {
-      setError("Houston we have a proble: " + error);
+      setError("An error occured: " + error);
     }
   };
 
@@ -47,16 +44,16 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
       <StyledChoice1>Choose you Style</StyledChoice1>
       <StyledCategory>
         <StyledList
-          active={listType === "popular"}
-          onClick={() => setListType("popular")}
-        >
-          popular
-        </StyledList>
-        <StyledList
           active={listType === "top_rated"}
           onClick={() => setListType("top_rated")}
         >
           top-rated
+        </StyledList>
+        <StyledList
+          active={listType === "popular"}
+          onClick={() => setListType("popular")}
+        >
+          popular
         </StyledList>
         <StyledList
           active={listType === "upcoming"}
@@ -73,7 +70,7 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
       </StyledCategory>
       <StyledChoice2>Choose your Movies</StyledChoice2>
 
-      {loading ? "Now loading boss..." : ""}
+      {loading ? <StyledLoading>Now loading your movies...</StyledLoading> : ""}
 
       {error ? (
         error
@@ -106,25 +103,21 @@ const StyledCategory = styled.p`
 
 const StyledList = styled.button`
   box-sh-adow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  font-size: 13.9px;
+  font-size: 16px;
   font-weight: bold;
   color: orange;
   background: black;
-  border: 3px outset black;
+  border: 4px outset black;
   border-radius: 99rem;
-  padding: 0.7em 0.5em 0.9em 0.5em;
+  padding: 0.7em 0.55em 0.9em 0.55em;
   cursor: pointer;
   text-decoration: none;
 
   ${({ active }) =>
     active &&
     `
-background: blue;
+    border: 4px inset orange;
 `}
-
-  &:active {
-    border: 3px inset black;
-  }
 `;
 
 const StyledChoice2 = styled.p`
@@ -133,4 +126,10 @@ const StyledChoice2 = styled.p`
   font-size: 1.5rem;
   letter-spacing: 0.5px;
   margin: 3rem 0 1.1rem 0;
+`;
+
+const StyledLoading = styled.p`
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 `;

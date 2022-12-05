@@ -31,7 +31,4 @@ const Title = styled.h1`
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   letter-spacing: 2.2px;
   font-size: 2.5rem;
-  &:active {
-    border: 7px inset black;
-  }
 `;
