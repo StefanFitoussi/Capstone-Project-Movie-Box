@@ -126,4 +126,5 @@ const StyledLoading = styled.p`
   font-size: 1rem;
   font-weight: bold;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
 `;
