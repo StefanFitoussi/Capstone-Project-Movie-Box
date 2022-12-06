@@ -44,12 +44,6 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
       <StyledChoice1>Choose you Style</StyledChoice1>
       <StyledCategory>
         <StyledList
-          active={listType === "top_rated"}
-          onClick={() => setListType("top_rated")}
-        >
-          top-rated
-        </StyledList>
-        <StyledList
           active={listType === "popular"}
           onClick={() => setListType("popular")}
         >
@@ -60,6 +54,12 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
           onClick={() => setListType("upcoming")}
         >
           upcoming
+        </StyledList>
+        <StyledList
+          active={listType === "now_playing"}
+          onClick={() => setListType("now_playing")}
+        >
+          playing
         </StyledList>
       </StyledCategory>
       <StyledChoice2>Choose your Movies</StyledChoice2>
