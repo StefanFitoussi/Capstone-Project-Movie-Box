@@ -41,7 +41,7 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
 
   return (
     <>
-      <StyledChoice1>Choose you Style</StyledChoice1>
+      <StyledChoice1>Choose your Style</StyledChoice1>
       <StyledCategory>
         <StyledList
           active={listType === "popular"}
@@ -64,11 +64,9 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
       </StyledCategory>
       <StyledChoice2>Choose your Movies</StyledChoice2>
 
-      {loading ? <StyledLoading>Now loading your movies...</StyledLoading> : ""}
+      {error && <p>{error}</p>}
 
-      {error ? (
-        error
-      ) : (
+      {displayedMovies && (
         <MovieList
           movies={displayedMovies}
           onToggleBookmark={onToggleBookmark}
@@ -89,19 +87,17 @@ const StyledChoice1 = styled.p`
 
 const StyledCategory = styled.p`
   display: flex;
-  list-style-type: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
 
 const StyledList = styled.button`
-  box-sh-adow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
-  color: orange;
-  background: black;
-  border: 4px outset black;
+  color: #ffa500;
+  background: #000000;
+  border: 4px outset #000000;
   border-radius: 99rem;
   padding: 0.7em 0.55em 0.9em 0.55em;
   cursor: pointer;
@@ -110,7 +106,7 @@ const StyledList = styled.button`
   ${({ active }) =>
     active &&
     `
-    border: 4px inset orange;
+    border: 4px inset #ffa500;
 `}
 `;
 

@@ -72,8 +72,8 @@ const UserRating = styled.p`
   position: relative;
   width: max-content;
   z-index: 10;
-  background: black;
-  color: orange;
+  background: #000000;
+  color: #ffa500;
   font-size: 12px;
   font-weight: bold;
   margin-left: auto;
@@ -86,16 +86,16 @@ const UserRating = styled.p`
 const StyledBookmark = styled.button`
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
   margin: -2.2rem 0 0 1rem;
-  color: orange;
+  color: #ffa500;
   font-size: 12px;
   font-weight: bold;
-  background: black;
+  background: #000000;
   position: absolute;
   width: max-content;
   margin-right: auto;
   z-index: 10;
   cursor: pointer;
-  border: 3px outset black;
+  border: 3px outset #000000;
   border-radius: 99rem;
   padding: 8px 25px;
   letter-spacing: 0.5px;

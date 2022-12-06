@@ -32,39 +32,41 @@ const StyledNavigation = styled.nav`
 `;
 
 const StyledLink1 = styled(Link)`
-border: 5px outset black;#
+border: 5px outset  #000000;#
   height: 1rem;
-  color: orange;
-  background-color: black;
+  color: #ffa500;
+  background-color:  #000000;
   border-radius: 8px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.4rem;
   text-decoration: none;
   text-align: center;
+  letter-spacing: 1px;
   padding: 0.55em 1em 0.5em 1em;
   cursor: pointer;
   ${({ active }) =>
     active &&
     `
-    border: 5px inset orange;
+    border: 5px inset #ffa500;
 `}
 `;
 
 const StyledLink2 = styled(Link)`
-border: 5px outset black;#
+border: 5px outset  #000000;#
   height: 1rem;
-  color: orange;
-  background-color: black;
+  color: #ffa500;
+  background-color:  #000000;
   border-radius: 8px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.4rem;
   text-decoration: none;
   text-align: center;
+  letter-spacing: 1px;
   padding: 0.55em 1.25em 0.5em 1.25em;
   cursor: pointer;
   ${({ active }) =>
     active &&
     `
-    border: 5px inset orange;
+    border: 5px inset #ffa500;
 `}
 `;
