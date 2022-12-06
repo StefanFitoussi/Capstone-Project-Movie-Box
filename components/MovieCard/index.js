@@ -1,13 +1,9 @@
 import styled from "styled-components";
+import { useState } from "react";
 
-export default function MovieCard({
-  isOpen,
-  movie,
-  setActiveItem,
-  index,
-  onToggleBookmark,
-  bookmarks,
-}) {
+export default function MovieCard({ movie, onToggleBookmark, bookmarks }) {
+  const [isDetailShown, setIsDetailShown] = useState(false);
+
   if (!movie) {
     return (
       <>
@@ -19,13 +15,9 @@ export default function MovieCard({
   return (
     <MovieListItem>
       <CardImage
-        onClick={() => {
-          if (isOpen) {
-            setActiveItem(undefined);
-            return;
-          }
-          setActiveItem(index);
-        }}
+        onClick={() =>
+          setIsDetailShown((previousIsDetailShown) => !previousIsDetailShown)
+        }
         src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
       ></CardImage>
       <>
@@ -33,7 +25,7 @@ export default function MovieCard({
         <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
           {bookmarks.includes(movie.id) ? "REMOVE" : "ADD"}
         </StyledBookmark>
-        {isOpen ? (
+        {isDetailShown ? (
           <CardBody>
             <MovieTitleH3>{movie.original_title}</MovieTitleH3>
             <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
