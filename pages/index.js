@@ -11,10 +11,12 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
   const fetchMovies = async () => {
     try {
       setLoading(true);
-
+      console.log(process.env.KEY);
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${listType}?api_key=c02216a131e954f6cb9dc96daec0b215`
+        `https://api.themoviedb.org/3/movie/${listType}?api_key=${process.env.KEY}`
       );
+
+      // c02216a131e954f6cb9dc96daec0b215
 
       setLoading(false);
 
@@ -44,19 +46,19 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
       <StyledChoice1>Choose your Style</StyledChoice1>
       <StyledCategory>
         <StyledList
-          active={listType === "popular"}
+          active={listType === "popular" ? 1 : 0}
           onClick={() => setListType("popular")}
         >
           popular
         </StyledList>
         <StyledList
-          active={listType === "upcoming"}
+          active={listType === "upcoming" ? 1 : 0}
           onClick={() => setListType("upcoming")}
         >
           upcoming
         </StyledList>
         <StyledList
-          active={listType === "now_playing"}
+          active={listType === "now_playing" ? 1 : 0}
           onClick={() => setListType("now_playing")}
         >
           playing

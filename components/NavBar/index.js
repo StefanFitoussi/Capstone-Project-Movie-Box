@@ -7,10 +7,17 @@ export default function NavBar() {
 
   return (
     <StyledNavigation>
-      <StyledLink1 active={router.asPath === "/"} href="/" className="active">
+      <StyledLink1
+        active={router.asPath === "/" ? 1 : 0}
+        href="/"
+        className="active"
+      >
         HOME
       </StyledLink1>
-      <StyledLink2 active={router.asPath === "/WatchList"} href="/WatchList">
+      <StyledLink2
+        active={router.asPath === "/WatchList" ? 1 : 0}
+        href="/WatchList"
+      >
         LIST
       </StyledLink2>
     </StyledNavigation>
