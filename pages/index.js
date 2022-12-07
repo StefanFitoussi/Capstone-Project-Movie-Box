@@ -11,9 +11,8 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
   const fetchMovies = async () => {
     try {
       setLoading(true);
-      console.log(process.env.KEY);
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${listType}?api_key=${process.env.KEY}`
+        `https://api.themoviedb.org/3/movie/${listType}?api_key=c02216a131e954f6cb9dc96daec0b215`
       );
 
       // c02216a131e954f6cb9dc96daec0b215
@@ -46,6 +45,12 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
       <StyledChoice1>Choose your Style</StyledChoice1>
       <StyledCategory>
         <StyledList
+          active={listType === "top_rated" ? 1 : 0}
+          onClick={() => setListType("top_rated")}
+        >
+          top-rated
+        </StyledList>
+        <StyledList
           active={listType === "popular" ? 1 : 0}
           onClick={() => setListType("popular")}
         >
@@ -56,12 +61,6 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
           onClick={() => setListType("upcoming")}
         >
           upcoming
-        </StyledList>
-        <StyledList
-          active={listType === "now_playing" ? 1 : 0}
-          onClick={() => setListType("now_playing")}
-        >
-          playing
         </StyledList>
       </StyledCategory>
       <StyledChoice2>Choose your Movies</StyledChoice2>
@@ -104,7 +103,6 @@ const StyledList = styled.button`
   padding: 0.7em 0.55em 0.9em 0.55em;
   cursor: pointer;
   text-decoration: none;
-
   ${({ active }) =>
     active &&
     `
