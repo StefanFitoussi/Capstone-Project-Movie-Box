@@ -34,8 +34,8 @@ const StyledNavigation = styled.nav`
   height: 4rem;
   width: 100%;
   bottom: 0.4em;
-  z-index: 100;
   max-width: 450px;
+  z-index: 100;
 `;
 
 const StyledLink1 = styled(Link)`

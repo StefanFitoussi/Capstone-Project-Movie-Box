@@ -12,10 +12,8 @@ export default function Home({ movies, onToggleBookmark, bookmarks }) {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${listType}?api_key=c02216a131e954f6cb9dc96daec0b215`
+        `https://api.themoviedb.org/3/movie/${listType}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
       );
-
-      // c02216a131e954f6cb9dc96daec0b215
 
       setLoading(false);
 
@@ -94,11 +92,12 @@ const StyledCategory = styled.p`
 `;
 
 const StyledList = styled.button`
-  font-size: 1rem;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
+  font-size: 0.95rem;
   font-weight: bold;
   color: #ffa500;
   background: #000000;
-  border: 4px outset #000000;
+  border: 5px outset #000000;
   border-radius: 99rem;
   padding: 0.7em 0.55em 0.9em 0.55em;
   cursor: pointer;
@@ -106,7 +105,7 @@ const StyledList = styled.button`
   ${({ active }) =>
     active &&
     `
-    border: 4px inset #ffa500;
+    border: 5px inset #ffa500;
 `}
 `;
 
@@ -116,11 +115,4 @@ const StyledChoice2 = styled.p`
   font-size: 1.5rem;
   letter-spacing: 0.5px;
   margin: 3rem 0 1.1rem 0;
-`;
-
-const StyledLoading = styled.p`
-  font-size: 1rem;
-  font-weight: bold;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  text-align: center;
 `;

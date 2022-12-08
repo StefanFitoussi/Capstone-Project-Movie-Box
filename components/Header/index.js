@@ -19,6 +19,7 @@ const StyledHeader = styled.header`
   max-width: 450px;
   top: -1em;
   text-align: center;
+  z-index: 100;
 `;
 
 const Title = styled.p`

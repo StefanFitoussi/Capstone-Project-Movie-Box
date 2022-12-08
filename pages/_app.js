@@ -2,10 +2,7 @@ import GlobalStyles from "../components/GlobalStyles";
 import Layout from "../components/Layout/Layout";
 import { useLocalStorage } from "../helpers/hooks.js";
 import { useState, useEffect } from "react";
-const API_URL =
-  "https://api.themoviedb.org/3/movie/popular?api_key=c02216a131e954f6cb9dc96daec0b215";
-
-// ${process.env.API_KEY}
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
 function MyApp({ Component, pageProps }) {
   const [movies, setMovies] = useState([]);

@@ -19,6 +19,7 @@ export default function MovieCard({ movie, onToggleBookmark, bookmarks }) {
           setIsDetailShown((previousIsDetailShown) => !previousIsDetailShown)
         }
         src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+        alt="movie poster"
       ></CardImage>
       <>
         <UserRating>User-Rating: {movie.vote_average}</UserRating>
@@ -50,7 +51,7 @@ const CardBody = styled.div`
 `;
 
 const CardImage = styled.img`
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 6px 2px rgba(0.5, 0.5, 0.5, 0.95);
   border-radius: 8px;
   width: 100%;
   cursor: pointer;
@@ -67,7 +68,7 @@ const MovieTitleH3 = styled.h3`
 `;
 
 const UserRating = styled.p`
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 6px 2px rgba(0.5, 0.5, 0.5, 0.95);
   margin: -1.3rem 1rem 0 0;
   position: relative;
   width: max-content;
@@ -84,7 +85,7 @@ const UserRating = styled.p`
 `;
 
 const StyledBookmark = styled.button`
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 6px 2px rgba(0.5, 0.5, 0.5, 0.95);
   margin: -2.2rem 0 0 1rem;
   color: #ffa500;
   font-size: 12px;
@@ -99,6 +100,11 @@ const StyledBookmark = styled.button`
   border-radius: 99rem;
   padding: 8px 25px;
   letter-spacing: 0.5px;
+  ${({ active }) =>
+    active &&
+    `
+  border: 3px inset #ffa500;
+`}
 `;
 
 const ReleaseDate = styled.p`
