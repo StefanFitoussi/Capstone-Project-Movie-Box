@@ -1,32 +1,44 @@
 import GlobalStyles from "../components/GlobalStyles";
 import Layout from "../components/Layout/Layout";
 import { useLocalStorage } from "../helpers/hooks.js";
-import { useState, useEffect } from "react";
-const API_URL =
-  "https://api.themoviedb.org/3/movie/popular?api_key=c02216a131e954f6cb9dc96daec0b215";
+import { useState } from "react";
+import useSWR from "swr";
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
 function MyApp({ Component, pageProps }) {
-  const [movies, setMovies] = useState([]);
+  const [listType, setListType] = useState("popular");
   const [bookmarks, setBookmarks] = useLocalStorage("movieFavorites", []);
 
-  useEffect(() => {
-    // get api data
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-      });
-  }, []);
+  const {
+    data: movies,
+    error,
+    loading,
+  } = useSWR(
+    `https://api.themoviedb.org/3/movie/${listType}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
+    fetchMovies
+  );
+
+  async function fetchMovies(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.results;
+  }
+
+  function updateMovieListType(type) {
+    setListType(type);
+  }
 
   function toggleBookmark(id) {
-    if (bookmarks.includes(id)) {
-      const updatedBookmarks = bookmarks.filter(
-        (bookmarkId) => bookmarkId !== id
+    if (bookmarks.find((bookmark) => bookmark.id === id)) {
+      setBookmarks((previousBookmarks) =>
+        previousBookmarks.filter((bookmark) => bookmark.id !== id)
       );
-      setBookmarks(updatedBookmarks);
     } else {
-      const updatedBookmarks = [...bookmarks, id];
-      setBookmarks(updatedBookmarks);
+      const movieToBookmark = movies.find((movie) => movie.id === id);
+      setBookmarks((previousBookmarks) => [
+        ...previousBookmarks,
+        movieToBookmark,
+      ]);
     }
   }
 
@@ -34,12 +46,16 @@ function MyApp({ Component, pageProps }) {
     <>
       <GlobalStyles />
       <Layout>
-        <Component
-          {...pageProps}
-          movies={movies}
-          bookmarks={bookmarks}
-          onToggleBookmark={toggleBookmark}
-        />
+        {movies && (
+          <Component
+            {...pageProps}
+            movies={movies}
+            bookmarks={bookmarks}
+            onToggleBookmark={toggleBookmark}
+            listType={listType}
+            onUpdateMovieListType={updateMovieListType}
+          />
+        )}
       </Layout>
     </>
   );

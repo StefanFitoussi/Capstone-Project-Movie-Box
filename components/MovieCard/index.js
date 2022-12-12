@@ -1,13 +1,9 @@
 import styled from "styled-components";
+import { useState } from "react";
 
-export default function MovieCard({
-  isOpen,
-  movie,
-  setActiveItem,
-  index,
-  onToggleBookmark,
-  bookmarks,
-}) {
+export default function MovieCard({ movie, onToggleBookmark, bookmarks }) {
+  const [isDetailShown, setIsDetailShown] = useState(false);
+
   if (!movie) {
     return (
       <>
@@ -19,22 +15,21 @@ export default function MovieCard({
   return (
     <MovieListItem>
       <CardImage
-        onClick={() => {
-          if (isOpen) {
-            setActiveItem(undefined);
-            return;
-          }
-          setActiveItem(index);
-        }}
+        onClick={() =>
+          setIsDetailShown((previousIsDetailShown) => !previousIsDetailShown)
+        }
         src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+        alt="movie poster"
       ></CardImage>
       <>
-        {isOpen ? (
+        <UserRating>User-Rating: {movie.vote_average}</UserRating>
+        <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
+          {bookmarks.find((bookmark) => bookmark.id === movie.id)
+            ? "REMOVE"
+            : "ADD"}
+        </StyledBookmark>
+        {isDetailShown ? (
           <CardBody>
-            <UserRating>User-Rating: {movie.vote_average}</UserRating>
-            <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
-              {bookmarks.includes(movie.id) ? "REMOVE" : "ADD"}
-            </StyledBookmark>
             <MovieTitleH3>{movie.original_title}</MovieTitleH3>
             <ReleaseDate>Release-Date: {movie.release_date}</ReleaseDate>
             <Overview>Overview: {movie.overview}</Overview>
@@ -53,19 +48,19 @@ const StyledH2 = styled.h2`
 `;
 
 const CardBody = styled.div`
-  padding: 16px;
+  padding: 1rem;
+  margin-top: -1.2rem;
 `;
 
 const CardImage = styled.img`
-  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.45);
-  d-isplay: block;
+  box-shadow: 0 2px 6px 2px rgba(0.5, 0.5, 0.5, 0.95);
   border-radius: 8px;
   width: 100%;
   cursor: pointer;
 `;
 const MovieListItem = styled.li`
   border-radius: 10px;
-  margin-bottom: 75px;
+  margin: -0.6rem 0 7rem 0;
 `;
 
 const MovieTitleH3 = styled.h3`
@@ -75,33 +70,43 @@ const MovieTitleH3 = styled.h3`
 `;
 
 const UserRating = styled.p`
-  margin-top: -2.5rem;
-  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px 2px rgba(0.5, 0.5, 0.5, 0.95);
+  margin: -1.3rem 1rem 0 0;
   position: relative;
-  max-width: 10rem;
   width: max-content;
   z-index: 10;
-  background: black;
-  color: orange;
+  background: #000000;
+  color: #ffa500;
   font-size: 12px;
+  font-weight: bold;
   margin-left: auto;
   border-radius: 99rem;
   padding: 8px 12px;
   margin-bottom: 0;
+  letter-spacing: 0.5px;
 `;
 
 const StyledBookmark = styled.button`
-  margin: -1.95rem 0 1rem 0;
-  color: orange;
-  background: black;
-  border: transparent;
+  box-shadow: 0 2px 6px 2px rgba(0.5, 0.5, 0.5, 0.95);
+  margin: -2.2rem 0 0 1rem;
+  color: #ffa500;
+  font-size: 12px;
+  font-weight: bold;
+  background: #000000;
   position: absolute;
   width: max-content;
   margin-right: auto;
   z-index: 10;
   cursor: pointer;
+  border: 3px outset #000000;
   border-radius: 99rem;
   padding: 8px 25px;
+  letter-spacing: 0.5px;
+  ${({ active }) =>
+    active &&
+    `
+  border: 3px inset #ffa500;
+`}
 `;
 
 const ReleaseDate = styled.p`
