@@ -24,7 +24,9 @@ export default function MovieCard({ movie, onToggleBookmark, bookmarks }) {
       <>
         <UserRating>User-Rating: {movie.vote_average}</UserRating>
         <StyledBookmark onClick={() => onToggleBookmark(movie.id)}>
-          {bookmarks.includes(movie.id) ? "REMOVE" : "ADD"}
+          {bookmarks.find((bookmark) => bookmark.id === movie.id)
+            ? "REMOVE"
+            : "ADD"}
         </StyledBookmark>
         {isDetailShown ? (
           <CardBody>

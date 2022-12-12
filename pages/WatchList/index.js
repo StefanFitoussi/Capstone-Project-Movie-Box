@@ -1,31 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
-import MovieCard from "../../components/MovieCard";
+import MovieList from "../../components/MovieList";
 
-export default function WatchList({ movies, bookmarks, onToggleBookmark }) {
-  const [activeItem, setActiveItem] = useState();
-  const bookmarkedMovies = movies.filter((movie) =>
-    bookmarks.includes(movie.id)
-  );
+export default function WatchList({ bookmarks, onToggleBookmark }) {
   return (
     <>
       <StyledH2>Your Watchlist</StyledH2>
-      {bookmarkedMovies.length === 0 ? (
+      {bookmarks.length === 0 ? (
         <StyledMessage>No movies here yet...</StyledMessage>
       ) : (
-        <MovieList>
-          {bookmarkedMovies.map((movie, index) => (
-            <MovieCard
-              key={movie.id}
-              isOpen={activeItem === index}
-              movie={movie}
-              setActiveItem={setActiveItem}
-              index={index}
-              onToggleBookmark={onToggleBookmark}
-              bookmarks={bookmarks}
-            ></MovieCard>
-          ))}
-        </MovieList>
+        <MovieList
+          movies={bookmarks}
+          onToggleBookmark={onToggleBookmark}
+          bookmarks={bookmarks}
+        />
       )}
     </>
   );
@@ -46,9 +34,4 @@ const StyledMessage = styled.p`
   font-size: 1.1rem;
   letter-spacing: 0.5px;
   margin-top: 0;
-`;
-const MovieList = styled.ul`
-  list-style: none;
-  max-width: 450px;
-  padding: 0;
 `;

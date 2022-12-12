@@ -1,77 +1,43 @@
 import styled from "styled-components";
 import MovieList from "../components/MovieList";
-import { useEffect, useState } from "react";
 
-export default function Home({ movies, onToggleBookmark, bookmarks }) {
-  const [listType, setListType] = useState("popular");
-  const [displayedMovies, setDisplayedMovies] = useState(movies);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
-
-  const fetchMovies = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${listType}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
-      );
-
-      setLoading(false);
-
-      const data = await response.json();
-
-      if (listType === "latest") {
-        setDisplayedMovies([data]);
-        return;
-      }
-
-      setDisplayedMovies(data.results);
-    } catch (error) {
-      setError("An error occured: " + error);
-    }
-  };
-
-  useEffect(() => {
-    if (listType === "popular") {
-      setDisplayedMovies(movies);
-    }
-
-    fetchMovies();
-  }, [listType]);
-
+export default function Home({
+  movies,
+  onToggleBookmark,
+  bookmarks,
+  listType,
+  onUpdateMovieListType,
+}) {
   return (
     <>
       <StyledChoice1>Choose your Style</StyledChoice1>
       <StyledCategory>
         <StyledList
           active={listType === "top_rated" ? 1 : 0}
-          onClick={() => setListType("top_rated")}
+          onClick={() => onUpdateMovieListType("top_rated")}
         >
           top-rated
         </StyledList>
         <StyledList
           active={listType === "popular" ? 1 : 0}
-          onClick={() => setListType("popular")}
+          onClick={() => onUpdateMovieListType("popular")}
         >
           popular
         </StyledList>
         <StyledList
           active={listType === "upcoming" ? 1 : 0}
-          onClick={() => setListType("upcoming")}
+          onClick={() => onUpdateMovieListType("upcoming")}
         >
           upcoming
         </StyledList>
       </StyledCategory>
       <StyledChoice2>Choose your Movies</StyledChoice2>
 
-      {error && <p>{error}</p>}
-
-      {displayedMovies && (
-        <MovieList
-          movies={displayedMovies}
-          onToggleBookmark={onToggleBookmark}
-          bookmarks={bookmarks}
-        />
-      )}
+      <MovieList
+        movies={movies}
+        onToggleBookmark={onToggleBookmark}
+        bookmarks={bookmarks}
+      />
     </>
   );
 }
