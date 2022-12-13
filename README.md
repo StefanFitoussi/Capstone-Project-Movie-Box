@@ -1,0 +1,1 @@
+"Movie-Box" helps the user to decide what interesting cinematic options are given. It is a fetch tool for information about a certain range of movies, where the user can take a look at different film lists, get more details about specific movies and store them in a watch list.
