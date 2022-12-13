@@ -1,7 +1,5 @@
 # Movie-Box
 
-![Mobile View Screen](/src/images/ImageGroupMobileView.svg)
-
 ## Capstone Project of the Web Development bootcamp at neuefische
 
 "Movie-Box" helps the user to decide what to possibly watch next within a pool of given cinematic selections. It is a fetch tool for information about a certain range of movies, where the user can take a look at different film lists, get more details about specific movies and store them in a watchlist.
