@@ -8,7 +8,7 @@ From the landing page the user has direct access to the "popular"-list of 20 mov
 
 On top of the landing page is the selection of different movie lists for display. A click on one of the other options displays the respective list. The user can access these movies by scolling down.
 
-A click on the ADD-button adds a movie to the watchlist, which can be accesses by clicking the "LIST"-button at the bottom of the screen. A click on the REMOVE-button removed a from the watchlist. This can be do from the watchlist, as well the landing page. The number of movies to store in the watchlist ist not limited.
+A click on the ADD-button adds a movie to the watchlist, which can be accesses by clicking the "LIST"-button at the bottom of the screen. A click on the REMOVE-button removes it from the watchlist. This can be done from both the watchlist, as well as the landing page. The number of movies to store in the watchlist ist not limited.
 
 ### Deployment
 The latest update of Movie-Box on vercel: (https://capstone-project-movie-box.vercel.app/)
